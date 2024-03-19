@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerInput();
         Sprint();
+        SpeedControl();
         grouded = Physics.Raycast(transform.position, Vector3.down, plauerHeight * 0.5f + 0.2f, ground);
 
         if (grouded)
@@ -90,5 +91,16 @@ public class PlayerMovement : MonoBehaviour
             stamina = Mathf.Clamp(stamina, 0, 4);
         }
 
+    }
+
+    private void SpeedControl()
+    {
+        Vector3 playerVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        if(playerVel.magnitude > moveSpeed)
+        {
+            Vector3 limitedVel = playerVel.normalized * moveSpeed;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+        }
     }
 }
