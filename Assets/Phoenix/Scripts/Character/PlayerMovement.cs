@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
 
     public float groundDrag;
 
+    public float stamina = 5f;
+    public bool sprint = false; 
+
     public float plauerHeight;
     public LayerMask ground;
     bool grouded;
@@ -32,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         PlayerInput();
-
+        Sprint();
         grouded = Physics.Raycast(transform.position, Vector3.down, plauerHeight * 0.5f + 0.2f, ground);
 
         if (grouded)
@@ -61,5 +64,31 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+    }
+
+    private void Sprint()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftShift) && !sprint && stamina > 0)
+        {
+            moveSpeed = moveSpeed * 1.5f;
+            sprint = true;
+        }
+        else if(Input.GetKeyUp(KeyCode.LeftShift) && sprint || stamina <= 0)
+        {
+            moveSpeed = 4f;
+            sprint = false;
+        }
+
+        if(sprint)
+        {
+            stamina -= Time.deltaTime;
+            stamina = Mathf.Clamp(stamina, 0, 4);
+        }
+        else
+        {
+            stamina += Time.deltaTime;
+            stamina = Mathf.Clamp(stamina, 0, 4);
+        }
+
     }
 }

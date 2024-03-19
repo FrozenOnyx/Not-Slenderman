@@ -8,6 +8,7 @@ public class UvTorch : MonoBehaviour
 {
     public GameObject torchLight;
     public bool torchActive = false;
+    public bool torchDisbled = false;
 
     public Image torchTimeBar;
 
@@ -18,16 +19,17 @@ public class UvTorch : MonoBehaviour
     {
         TorchControls();
         TorchTime();
+        TorchDisable();
     }
 
     private void TorchControls()
     {
-        if (Input.GetKeyDown(KeyCode.F) && torchActive == false)
+        if (Input.GetKeyDown(KeyCode.F) && torchActive == false && torchDisbled == false)
         {
             torchActive = true;
             torchLight.SetActive(true);     
         }
-        else if(Input.GetKeyDown(KeyCode.F) && torchActive == true)
+        else if(Input.GetKeyDown(KeyCode.F) && torchActive == true && torchDisbled == false)
         {
             torchActive = false;
             torchLight.SetActive(false);
@@ -38,14 +40,28 @@ public class UvTorch : MonoBehaviour
         if(torchActive == true && timeInTorch > 0)
         {
             timeInTorch -= Time.deltaTime;
-            torchTimeBar.fillAmount = timeInTorch /10f;
-            timeInTorch = Mathf.Clamp(timeInTorch, 0, 10f);
+            torchTimeBar.fillAmount = timeInTorch /maxTimeOfTorch;
+            timeInTorch = Mathf.Clamp(timeInTorch, 0, maxTimeOfTorch);
         }
         else if (torchActive == false && timeInTorch <= maxTimeOfTorch)
         {
             timeInTorch += Time.deltaTime;
-            torchTimeBar.fillAmount = timeInTorch / 10f;
-            timeInTorch = Mathf.Clamp(timeInTorch, 0, 10f);
+            torchTimeBar.fillAmount = timeInTorch / maxTimeOfTorch;
+            timeInTorch = Mathf.Clamp(timeInTorch, 0, maxTimeOfTorch);
+        }
+    }
+
+    private void TorchDisable()
+    {
+        if(timeInTorch <= 0)
+        {
+            torchActive = false;
+            torchLight.SetActive(false);
+            torchDisbled = true;
+        }
+        else if(timeInTorch >= 4)
+        {
+            torchDisbled = false;
         }
     }
 }
