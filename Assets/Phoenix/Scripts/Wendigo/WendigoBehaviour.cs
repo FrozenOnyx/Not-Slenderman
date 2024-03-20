@@ -23,7 +23,7 @@ public class WendigoBehaviour : MonoBehaviour
     public GameObject player;
     public float distance;
 
-    public float speed = 3f;
+    public float speed = 7f;
     public float rotSpeed = 100f;
 
 
@@ -33,10 +33,13 @@ public class WendigoBehaviour : MonoBehaviour
     public bool isRotatingRight = false;
     public bool isMoving = false;
 
+    public SkullArea skullCount;
+    public InCameraVeiw cameraVeiw;
     // Start is called before the first frame update
     void Start()
     {
         states.Add("Roaming", new Roaming(gameObject, this));
+        states.Add("Stalking", new Stalking(gameObject, this));
         ChangeState("Roaming");
     }
     public void ChangeState(string BehaviourStates)
@@ -66,6 +69,7 @@ public class WendigoBehaviour : MonoBehaviour
             StartCoroutine(Wondering());
         }
     }
+    #region RoamingMonoCode
     IEnumerator Wondering()
     {
         int rotTime = Random.Range(1, 3);
@@ -94,6 +98,7 @@ public class WendigoBehaviour : MonoBehaviour
         }
         wondering = false;
     }
+    #endregion 
 }
 public class Roaming : BehaviourStates
 {
@@ -116,6 +121,10 @@ public class Roaming : BehaviourStates
     {
         StayOutOfRange();
         StartRoming();
+        if(manager.skullCount.skullCounter != 0)
+        {
+            manager.ChangeState("Stalking");
+        }
     }
 
     private void StayOutOfRange()
@@ -145,6 +154,39 @@ public class Roaming : BehaviourStates
             {
                 wendigo.transform.position += wendigo.transform.forward * manager.speed * Time.deltaTime;
             }
+        }
+    }
+}
+public class Stalking : BehaviourStates
+{
+    public Stalking(GameObject gameObject, WendigoBehaviour wendigoBehaviour)
+    {
+        wendigo = gameObject;
+        manager = wendigoBehaviour;
+    }
+    public override void EnterState() 
+    {
+
+    }
+    public override void ExitState() 
+    { 
+
+    }
+    public override void Update() 
+    {
+        SneakTowardsPlayer();
+    }
+
+    private void SneakTowardsPlayer()
+    { 
+        if (manager.cameraVeiw.inCamera == false || manager.distance > 40)
+        {
+            wendigo.transform.LookAt(manager.player.transform.position);
+            wendigo.transform.position += wendigo.transform.forward * manager.speed * Time.deltaTime;
+        }
+        else if(manager.cameraVeiw.inCamera == true)
+        {
+            wendigo.transform.position -= wendigo.transform.forward * manager.speed * Time.deltaTime;
         }
     }
 }
