@@ -24,12 +24,12 @@ public class UvTorch : MonoBehaviour
 
     private void TorchControls()
     {
-        if (Input.GetKeyDown(KeyCode.F) && torchActive == false && torchDisbled == false)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && torchActive == false && torchDisbled == false)
         {
             torchActive = true;
             torchLight.SetActive(true);     
         }
-        else if(Input.GetKeyDown(KeyCode.F) && torchActive == true && torchDisbled == false)
+        else if(Input.GetKeyDown(KeyCode.Mouse0) && torchActive == true && torchDisbled == false)
         {
             torchActive = false;
             torchLight.SetActive(false);
