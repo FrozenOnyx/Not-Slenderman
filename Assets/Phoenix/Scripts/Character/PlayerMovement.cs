@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
-                rb.AddForce(Vector3.up * 250f, ForceMode.Force);
+                rb.AddForce(Vector3.up * 300f, ForceMode.Force);
             }
         }
     }
