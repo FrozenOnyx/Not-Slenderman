@@ -27,7 +27,7 @@ public class WendigoBehaviour : MonoBehaviour
     public float rotSpeed = 100f;
 
 
-    public bool romming = false;
+    public bool roaming = false;
     public bool wondering = false;
     public bool isRotatingLeft = false;
     public bool isRotatingRight = false;
@@ -36,8 +36,8 @@ public class WendigoBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        states.Add("Roming", new Romming(gameObject, this));
-        ChangeState("Roming");
+        states.Add("Roaming", new Roaming(gameObject, this));
+        ChangeState("Roaming");
     }
     public void ChangeState(string BehaviourStates)
     {
@@ -61,7 +61,7 @@ public class WendigoBehaviour : MonoBehaviour
         distance = Vector3.Distance(gameObject.transform.position, player.transform.position);
        // Debug.Log(distance);
 
-        if(romming && !wondering)
+        if(roaming && !wondering)
         {
             StartCoroutine(Wondering());
         }
@@ -95,9 +95,9 @@ public class WendigoBehaviour : MonoBehaviour
         wondering = false;
     }
 }
-public class Romming : BehaviourStates
+public class Roaming : BehaviourStates
 {
-    public Romming(GameObject gameObject, WendigoBehaviour wendigoBehaviour)
+    public Roaming(GameObject gameObject, WendigoBehaviour wendigoBehaviour)
     {
         wendigo = gameObject; 
         manager = wendigoBehaviour;
@@ -106,11 +106,11 @@ public class Romming : BehaviourStates
     
     public override void EnterState() 
     {
-        manager.romming = true;
+        manager.roaming = true;
     }
     public override void ExitState() 
     {
-        manager.romming = false;
+        manager.roaming = false;
     }
     public override void Update() 
     {
