@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerInput();
         Sprint();
         SpeedControl();
+        Jump();
         grouded = Physics.Raycast(transform.position, Vector3.down, plauerHeight * 0.5f + 0.2f, ground);
 
         if (grouded)
@@ -65,6 +66,17 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+    }
+
+    private void Jump()
+    {
+        if (grouded)
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                rb.AddForce(Vector3.up * 250f, ForceMode.Force);
+            }
+        }
     }
 
     private void Sprint()
