@@ -17,9 +17,8 @@ public class InventoryUI : MonoBehaviour
             menuActive = false;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && menuActive == false)
+        } 
+        else if (Input.GetKeyDown(KeyCode.E) && menuActive == false)
         {
             Time.timeScale = 0;
             InventoryMenu.SetActive(true);
