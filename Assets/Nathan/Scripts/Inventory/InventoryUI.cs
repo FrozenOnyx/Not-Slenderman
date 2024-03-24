@@ -19,12 +19,14 @@ public class InventoryUI : MonoBehaviour
     {
         if (Input.GetButtonDown("e") && menuActive == true)
         {
+            Time.timeScale = 1;
             InventoryMenu.SetActive(false);
             menuActive = false;
         }
 
         if (Input.GetButtonDown("e") && menuActive == false)
         {
+            Time.timeScale = 0;
             InventoryMenu.SetActive(true);
             menuActive = true;
         }
