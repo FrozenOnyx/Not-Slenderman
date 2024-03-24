@@ -8,25 +8,16 @@ public class InventoryUI : MonoBehaviour
     public GameObject InventoryMenu;
     private bool menuActive;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("e") && menuActive == true)
+        if (Input.GetKeyDown(KeyCode.E) && menuActive == true)
         {
-            Time.timeScale = 1;
             InventoryMenu.SetActive(false);
             menuActive = false;
         }
 
-        if (Input.GetButtonDown("e") && menuActive == false)
+        if (Input.GetKeyDown(KeyCode.E) && menuActive == false)
         {
-            Time.timeScale = 0;
             InventoryMenu.SetActive(true);
             menuActive = true;
         }
