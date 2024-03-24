@@ -203,6 +203,7 @@ public class Stalking : BehaviourStates
         }
         else if(manager.cameraVeiw.inCamera == true)
         {
+            wendigo.transform.LookAt(manager.player.transform.position);
             manager.rb.AddForce(wendigo.transform.forward.normalized * - manager.speed / 2, ForceMode.Force);
         }
     }
@@ -210,7 +211,7 @@ public class Stalking : BehaviourStates
     {
         Vector3 wendigoVel = new Vector3(manager.rb.velocity.x, 0f, manager.rb.velocity.z);
 
-        if (wendigoVel.magnitude < 1)
+        if (wendigoVel.magnitude < 0.05)
         {
             manager.rb.AddForce(wendigo.transform.right.normalized * manager.speed *10f, ForceMode.Force);
         }
