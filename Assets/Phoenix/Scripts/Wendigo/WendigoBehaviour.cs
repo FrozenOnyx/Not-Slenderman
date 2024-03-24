@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BehaviourStates
 {
@@ -33,6 +34,8 @@ public class WendigoBehaviour : MonoBehaviour
     public bool isRotatingRight = false;
     public bool isMoving = false;
 
+    public Rigidbody rb;
+
     public SkullArea skullCount;
     public InCameraVeiw cameraVeiw;
     // Start is called before the first frame update
@@ -41,6 +44,8 @@ public class WendigoBehaviour : MonoBehaviour
         states.Add("Roaming", new Roaming(gameObject, this));
         states.Add("Stalking", new Stalking(gameObject, this));
         ChangeState("Roaming");
+
+        rb = GetComponent<Rigidbody>();
     }
     public void ChangeState(string BehaviourStates)
     {
@@ -68,9 +73,20 @@ public class WendigoBehaviour : MonoBehaviour
         {
             StartCoroutine(Wondering());
         }
+        SpeedControl();
     }
-    #region RoamingMonoCode
-    IEnumerator Wondering()
+    private void SpeedControl()
+    {
+        Vector3 wendigoVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        if (wendigoVel.magnitude > speed)
+        {
+            Vector3 limitedVel = wendigoVel.normalized * speed;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+        }
+    }
+        #region RoamingMonoCode
+        IEnumerator Wondering()
     {
         int rotTime = Random.Range(1, 3);
         int rotWait = Random.Range(1, 4);
@@ -175,6 +191,7 @@ public class Stalking : BehaviourStates
     public override void Update() 
     {
         SneakTowardsPlayer();
+        MoveIfStuck();
     }
 
     private void SneakTowardsPlayer()
@@ -182,11 +199,21 @@ public class Stalking : BehaviourStates
         if (manager.cameraVeiw.inCamera == false || manager.distance > 40)
         {
             wendigo.transform.LookAt(manager.player.transform.position);
-            wendigo.transform.position += wendigo.transform.forward * manager.speed * Time.deltaTime;
+            manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed /2, ForceMode.Force) ;
         }
         else if(manager.cameraVeiw.inCamera == true)
         {
-            wendigo.transform.position -= wendigo.transform.forward * manager.speed * Time.deltaTime;
+            wendigo.transform.LookAt(manager.player.transform.position);
+            manager.rb.AddForce(wendigo.transform.forward.normalized * - manager.speed / 2, ForceMode.Force);
+        }
+    }
+    private void MoveIfStuck()
+    {
+        Vector3 wendigoVel = new Vector3(manager.rb.velocity.x, 0f, manager.rb.velocity.z);
+
+        if (wendigoVel.magnitude < 0.05)
+        {
+            manager.rb.AddForce(wendigo.transform.right.normalized * manager.speed *10f, ForceMode.Force);
         }
     }
 }

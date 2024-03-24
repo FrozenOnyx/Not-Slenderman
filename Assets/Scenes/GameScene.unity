@@ -1618,6 +1618,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582989921}
   m_CullTransparentMesh: 1
+--- !u!54 &1589645904 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 2029335438292936886, guid: 41f17e2459090a64eabf58e84ba527fe, type: 3}
+  m_PrefabInstance: {fileID: 9115409098542139681}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1687302595
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,6 +2168,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1965843076196420904, guid: 41f17e2459090a64eabf58e84ba527fe, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1589645904}
+    - target: {fileID: 1965843076196420904, guid: 41f17e2459090a64eabf58e84ba527fe, type: 3}
       propertyPath: speed
       value: 7
       objectReference: {fileID: 0}
@@ -2178,6 +2187,10 @@ PrefabInstance:
       propertyPath: skullCount
       value: 
       objectReference: {fileID: 1942824903}
+    - target: {fileID: 2029335438292936886, guid: 41f17e2459090a64eabf58e84ba527fe, type: 3}
+      propertyPath: m_Drag
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3750658718779927898, guid: 41f17e2459090a64eabf58e84ba527fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
