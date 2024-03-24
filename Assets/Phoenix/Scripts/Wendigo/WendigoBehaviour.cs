@@ -23,21 +23,24 @@ public class WendigoBehaviour : MonoBehaviour
     public GameObject player;
     public float distance;
 
-    public float speed = 3f;
+    public float speed = 7f;
     public float rotSpeed = 100f;
 
 
-    public bool romming = false;
+    public bool roaming = false;
     public bool wondering = false;
     public bool isRotatingLeft = false;
     public bool isRotatingRight = false;
     public bool isMoving = false;
 
+    public SkullArea skullCount;
+    public InCameraVeiw cameraVeiw;
     // Start is called before the first frame update
     void Start()
     {
-        states.Add("Roming", new Romming(gameObject, this));
-        ChangeState("Roming");
+        states.Add("Roaming", new Roaming(gameObject, this));
+        states.Add("Stalking", new Stalking(gameObject, this));
+        ChangeState("Roaming");
     }
     public void ChangeState(string BehaviourStates)
     {
@@ -61,11 +64,12 @@ public class WendigoBehaviour : MonoBehaviour
         distance = Vector3.Distance(gameObject.transform.position, player.transform.position);
        // Debug.Log(distance);
 
-        if(romming && !wondering)
+        if(roaming && !wondering)
         {
             StartCoroutine(Wondering());
         }
     }
+    #region RoamingMonoCode
     IEnumerator Wondering()
     {
         int rotTime = Random.Range(1, 3);
@@ -94,10 +98,11 @@ public class WendigoBehaviour : MonoBehaviour
         }
         wondering = false;
     }
+    #endregion 
 }
-public class Romming : BehaviourStates
+public class Roaming : BehaviourStates
 {
-    public Romming(GameObject gameObject, WendigoBehaviour wendigoBehaviour)
+    public Roaming(GameObject gameObject, WendigoBehaviour wendigoBehaviour)
     {
         wendigo = gameObject; 
         manager = wendigoBehaviour;
@@ -106,16 +111,20 @@ public class Romming : BehaviourStates
     
     public override void EnterState() 
     {
-        manager.romming = true;
+        manager.roaming = true;
     }
     public override void ExitState() 
     {
-        manager.romming = false;
+        manager.roaming = false;
     }
     public override void Update() 
     {
         StayOutOfRange();
         StartRoming();
+        if(manager.skullCount.skullCounter != 0)
+        {
+            manager.ChangeState("Stalking");
+        }
     }
 
     private void StayOutOfRange()
@@ -145,6 +154,39 @@ public class Romming : BehaviourStates
             {
                 wendigo.transform.position += wendigo.transform.forward * manager.speed * Time.deltaTime;
             }
+        }
+    }
+}
+public class Stalking : BehaviourStates
+{
+    public Stalking(GameObject gameObject, WendigoBehaviour wendigoBehaviour)
+    {
+        wendigo = gameObject;
+        manager = wendigoBehaviour;
+    }
+    public override void EnterState() 
+    {
+
+    }
+    public override void ExitState() 
+    { 
+
+    }
+    public override void Update() 
+    {
+        SneakTowardsPlayer();
+    }
+
+    private void SneakTowardsPlayer()
+    { 
+        if (manager.cameraVeiw.inCamera == false || manager.distance > 40)
+        {
+            wendigo.transform.LookAt(manager.player.transform.position);
+            wendigo.transform.position += wendigo.transform.forward * manager.speed * Time.deltaTime;
+        }
+        else if(manager.cameraVeiw.inCamera == true)
+        {
+            wendigo.transform.position -= wendigo.transform.forward * manager.speed * Time.deltaTime;
         }
     }
 }

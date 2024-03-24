@@ -5,7 +5,6 @@ using UnityEngine;
 public class SkullArea : MonoBehaviour
 {
     public int skullCounter = 0;
-    public GameObject skull;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,14 +14,14 @@ public class SkullArea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnTriggerStay(Collider other)
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            skull.SetActive(false);
+            Destroy(other.gameObject);
             skullCounter++;
             Debug.Log("head");
         }
