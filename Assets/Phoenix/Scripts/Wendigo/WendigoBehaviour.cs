@@ -212,7 +212,7 @@ public class Stalking : BehaviourStates
 
         if (wendigoVel.magnitude < 1)
         {
-            manager.rb.AddForce(wendigo.transform.right.normalized * manager.speed, ForceMode.Force);
+            manager.rb.AddForce(wendigo.transform.right.normalized * manager.speed *10f, ForceMode.Force);
         }
     }
 }
