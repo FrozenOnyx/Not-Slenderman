@@ -6,7 +6,7 @@ public class InventoryUI : MonoBehaviour
 {
 
     public GameObject InventoryMenu;
-    private bool menuActive;
+    private bool menuActive = false;
 
     void Update()
     {
@@ -15,6 +15,8 @@ public class InventoryUI : MonoBehaviour
             Time.timeScale = 1;
             InventoryMenu.SetActive(false);
             menuActive = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         if (Input.GetKeyDown(KeyCode.E) && menuActive == false)
@@ -22,6 +24,8 @@ public class InventoryUI : MonoBehaviour
             Time.timeScale = 0;
             InventoryMenu.SetActive(true);
             menuActive = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }
