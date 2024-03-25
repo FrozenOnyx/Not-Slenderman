@@ -24,7 +24,16 @@ public class InCameraVeiw : MonoBehaviour
         cameraFrustrum = GeometryUtility.CalculateFrustumPlanes(cam);
         if(GeometryUtility.TestPlanesAABB(cameraFrustrum, bounds))
         {
-            inCamera = true;
+            RaycastHit raycastHit;
+            Physics.Raycast(cam.transform.position, (col.transform.position - cam.transform.position).normalized, out raycastHit);
+            if (raycastHit.collider == col)
+            {
+                inCamera = true;
+            }
+            else
+            {
+                inCamera = false;
+            }
         }
         else
         {
