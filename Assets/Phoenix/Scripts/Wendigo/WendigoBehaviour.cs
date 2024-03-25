@@ -43,6 +43,7 @@ public class WendigoBehaviour : MonoBehaviour
     {
         states.Add("Roaming", new Roaming(gameObject, this));
         states.Add("Stalking", new Stalking(gameObject, this));
+        states.Add("Attacking", new Attacking(gameObject, this));
         ChangeState("Roaming");
 
         rb = GetComponent<Rigidbody>();
@@ -145,19 +146,15 @@ public class Roaming : BehaviourStates
 
     private void StayOutOfRange()
     {
-        if (manager.distance < 20)
+        if (manager.distance < 15)
         {
             wendigo.transform.LookAt(manager.player.transform.position);
-            wendigo.transform.Rotate(0, 180, 0);
             manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed , ForceMode.Force);
-            wendigo.transform.rotation = Quaternion.identity;
         }
     }
 
     private void StartRoming()
     {
-        if(manager.distance > 40)
-        {
             if(manager.isRotatingRight)
             {
                 wendigo.transform.Rotate(wendigo.transform.up * Time.deltaTime * manager.rotSpeed);
@@ -170,7 +167,6 @@ public class Roaming : BehaviourStates
             {
                 wendigo.transform.position += wendigo.transform.forward * manager.speed * Time.deltaTime;
             }
-        }
     }
 }
 public class Stalking : BehaviourStates
@@ -192,19 +188,24 @@ public class Stalking : BehaviourStates
     {
         SneakTowardsPlayer();
         MoveIfStuck();
+        if(manager.skullCount.skullCounter >= 2)
+        {
+            manager.ChangeState("Attacking");
+        }
+
     }
 
     private void SneakTowardsPlayer()
     { 
-        if (manager.cameraVeiw.inCamera == false || manager.distance > 40)
+        if (manager.cameraVeiw.inCamera == false || manager.distance > 40 || manager.distance < 10)
         {
             wendigo.transform.LookAt(manager.player.transform.position);
-            manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed, ForceMode.Force) ;
+            manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed /2, ForceMode.Force) ;
         }
         else if(manager.cameraVeiw.inCamera == true)
         {
             wendigo.transform.LookAt(manager.player.transform.position);
-            manager.rb.AddForce(wendigo.transform.forward.normalized * - manager.speed , ForceMode.Force);
+            manager.rb.AddForce(wendigo.transform.forward.normalized * - manager.speed *2 , ForceMode.Force);
         }
     }
     private void MoveIfStuck()
@@ -214,6 +215,43 @@ public class Stalking : BehaviourStates
         if (wendigoVel.magnitude < 0.05)
         {
             manager.rb.AddForce(wendigo.transform.right.normalized * manager.speed *10f, ForceMode.Force);
+        }
+    }
+}
+public class Attacking : BehaviourStates
+{
+    public Attacking(GameObject gameObject, WendigoBehaviour wendigoBehaviour)
+    {
+        wendigo = gameObject;
+        manager = wendigoBehaviour;
+    }
+    public override void EnterState()
+    {
+
+    }
+    public override void ExitState()
+    {
+
+    }
+    public override void Update()
+    {
+        RunAtPlayer();
+        MoveIfStuck();
+
+    }
+
+    private void RunAtPlayer()
+    { 
+        wendigo.transform.LookAt(manager.player.transform.position);  
+        manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed , ForceMode.Force);
+    }
+    private void MoveIfStuck()
+    {
+        Vector3 wendigoVel = new Vector3(manager.rb.velocity.x, 0f, manager.rb.velocity.z);
+
+        if (wendigoVel.magnitude < 0.05)
+        {
+            manager.rb.AddForce(wendigo.transform.right.normalized * manager.speed * 10f, ForceMode.Force);
         }
     }
 }

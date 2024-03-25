@@ -820,8 +820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7fd81cc192ac34dbc5a6d361bc3e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensx: 4000
-  sensy: 2000
+  sensx: 800
+  sensy: 800
   orientation: {fileID: 798849285}
 --- !u!1 &1027698972
 GameObject:
@@ -1970,7 +1970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5509130526643501965, guid: af6d024507e41a44a8e5beba98bb0421, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 25.3206
+      value: 25.320557
       objectReference: {fileID: 0}
     - target: {fileID: 5509130526643501965, guid: af6d024507e41a44a8e5beba98bb0421, type: 3}
       propertyPath: m_AnchoredPosition.y
