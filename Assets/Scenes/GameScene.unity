@@ -1141,6 +1141,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1340698771}
     m_Modifications:
+    - target: {fileID: 461689681135899811, guid: af6d024507e41a44a8e5beba98bb0421, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2278273970914540965, guid: af6d024507e41a44a8e5beba98bb0421, type: 3}
       propertyPath: m_Name
       value: Inventory
@@ -1227,6 +1231,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5509130526643501965, guid: af6d024507e41a44a8e5beba98bb0421, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223746532959534315, guid: af6d024507e41a44a8e5beba98bb0421, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
