@@ -33,46 +33,48 @@ public class InventoryUI : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
 
-        
-        if (skullArea.skullCounter == 1)
+        if (Input.GetKey(KeyCode.F))
         {
-            Debug.Log("Slot1Active");
-            slot1.SetActive(true);
-        } 
-        else if (skullArea.skullCounter == 2)
-        {
-            Debug.Log("Slot2Active");
-            slot2.SetActive(true);
-        }
-        else if (skullArea.skullCounter == 3)
-        {
-            Debug.Log("Slot3Active");
-            slot3.SetActive(true);
-        }
-        else if (skullArea.skullCounter == 4)
-        {
-            Debug.Log("Slot4Active");
-            slot4.SetActive(true);
-        }
-        else if (skullArea.skullCounter == 5)
-        {
+            if (skullArea.skullCounter == 1)
+            {
+                Debug.Log("Slot1Active");
+                slot1.SetActive(true);
+            }
+            else if (skullArea.skullCounter == 2)
+            {
+                Debug.Log("Slot2Active");
+                slot2.SetActive(true);
+            }
+            else if (skullArea.skullCounter == 3)
+            {
+                Debug.Log("Slot3Active");
+                slot3.SetActive(true);
+            }
+            else if (skullArea.skullCounter == 4)
+            {
+                Debug.Log("Slot4Active");
+                slot4.SetActive(true);
+            }
+            else if (skullArea.skullCounter == 5)
+            {
                 Debug.Log("Slot5Active");
                 slot5.SetActive(true);
-        }
-        else if (skullArea.skullCounter == 6)
-        {
-            Debug.Log("Slot6Active");
-            slot6.SetActive(true);
-        }
-        else if (skullArea.skullCounter == 7)
-        {
-            Debug.Log("Slot7Active");
-            slot7.SetActive(true);
-        }
-        else if (skullArea.skullCounter == 8)
-        {
-            Debug.Log("Slot8Active");
-            slot8.SetActive(true);
+            }
+            else if (skullArea.skullCounter == 6)
+            {
+                Debug.Log("Slot6Active");
+                slot6.SetActive(true);
+            }
+            else if (skullArea.skullCounter == 7)
+            {
+                Debug.Log("Slot7Active");
+                slot7.SetActive(true);
+            }
+            else if (skullArea.skullCounter == 8)
+            {
+                Debug.Log("Slot8Active");
+                slot8.SetActive(true);
+            }
         }
         
 
