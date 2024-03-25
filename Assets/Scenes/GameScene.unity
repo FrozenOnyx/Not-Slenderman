@@ -699,10 +699,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 162026169396367867, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.58
+      objectReference: {fileID: 0}
     - target: {fileID: 1579714676720630789, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
       propertyPath: Skull
       value: 
       objectReference: {fileID: 5825263171192331476, guid: 861a186c28b2de64183f7b73c08892ac, type: 3}
+    - target: {fileID: 1579714676720630789, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+      propertyPath: skullArea
+      value: 
+      objectReference: {fileID: 1942824903}
+    - target: {fileID: 3619510148081087800, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 22.69
+      objectReference: {fileID: 0}
     - target: {fileID: 4864124445378244294, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
       propertyPath: m_Name
       value: SpawnLocations
@@ -1075,8 +1087,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7fd81cc192ac34dbc5a6d361bc3e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensx: 400
-  sensy: 400
+  sensx: 4000
+  sensy: 4000
   orientation: {fileID: 798849285}
 --- !u!1 &1027698972
 GameObject:

@@ -143,4 +143,5 @@ MonoBehaviour:
   Spawn1: {fileID: 498281817363270781}
   Spawn2: {fileID: 2390526920899813741}
   Spawn3: {fileID: 614666441919300907}
-  Skull: {fileID: 0}
+  Skull: {fileID: 5825263171192331476, guid: 861a186c28b2de64183f7b73c08892ac, type: 3}
+  skullArea: {fileID: 0}
