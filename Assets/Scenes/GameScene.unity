@@ -1908,6 +1908,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5322275686581396553, guid: af6d024507e41a44a8e5beba98bb0421, type: 3}
+      propertyPath: skullArea
+      value: 
+      objectReference: {fileID: 1942824903}
     - target: {fileID: 5509130526643501965, guid: af6d024507e41a44a8e5beba98bb0421, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
