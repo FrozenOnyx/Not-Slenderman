@@ -14,16 +14,19 @@ public class SkullArea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (other.gameObject == GameObject.FindWithTag("Skull"))
         {
-            Destroy(other.gameObject);
-            skullCounter++;
-            Debug.Log("head");
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Destroy(other.gameObject);
+                skullCounter++;
+                Debug.Log("head");
+            }
         }
     }
 }
