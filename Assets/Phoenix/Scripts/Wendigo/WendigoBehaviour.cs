@@ -145,11 +145,11 @@ public class Roaming : BehaviourStates
 
     private void StayOutOfRange()
     {
-        if (manager.distance < 40)
+        if (manager.distance < 20)
         {
             wendigo.transform.LookAt(manager.player.transform.position);
             wendigo.transform.Rotate(0, 180, 0);
-            wendigo.transform.Translate(Vector3.forward);
+            manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed , ForceMode.Force);
             wendigo.transform.rotation = Quaternion.identity;
         }
     }
@@ -199,12 +199,12 @@ public class Stalking : BehaviourStates
         if (manager.cameraVeiw.inCamera == false || manager.distance > 40)
         {
             wendigo.transform.LookAt(manager.player.transform.position);
-            manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed /2, ForceMode.Force) ;
+            manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed, ForceMode.Force) ;
         }
         else if(manager.cameraVeiw.inCamera == true)
         {
             wendigo.transform.LookAt(manager.player.transform.position);
-            manager.rb.AddForce(wendigo.transform.forward.normalized * - manager.speed / 2, ForceMode.Force);
+            manager.rb.AddForce(wendigo.transform.forward.normalized * - manager.speed , ForceMode.Force);
         }
     }
     private void MoveIfStuck()

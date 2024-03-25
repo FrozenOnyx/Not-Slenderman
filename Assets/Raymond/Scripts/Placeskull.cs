@@ -11,6 +11,7 @@ public class Placeskull : MonoBehaviour
 
     public SkullArea skullAreaScript;
 
+    public GameObject win;
     bool touched = false;
     // Start is called before the first frame update
     void Start()
@@ -23,18 +24,23 @@ public class Placeskull : MonoBehaviour
     {
         if (touched)
         {
-            if (skullAreaScript.skullCounter == 1 && Input.GetKeyDown(KeyCode.F))
+            if (skullAreaScript.skullCounter >= 1 && Input.GetKeyDown(KeyCode.F) && !skull1.activeInHierarchy)
             {
                 skull1.SetActive(true);
             }
-            else if (skullAreaScript.skullCounter == 2 && Input.GetKeyDown(KeyCode.F))
+            else if (skullAreaScript.skullCounter >= 2 && Input.GetKeyDown(KeyCode.F) && skull1.activeInHierarchy && !skull2.activeInHierarchy)
             {
                 skull2.SetActive(true);
             }
-            else if (skullAreaScript.skullCounter == 3 && Input.GetKeyDown(KeyCode.F))
+            else if (skullAreaScript.skullCounter >= 3 && Input.GetKeyDown(KeyCode.F) && skull1.activeInHierarchy && skull2.activeInHierarchy && !skull3.activeInHierarchy)
             {
                 skull3.SetActive(true);
             }
+        }
+        if(skull1.activeInHierarchy && skull2.activeInHierarchy && skull3.activeInHierarchy)
+        {
+            win.SetActive(true);
+            Time.timeScale = 0f;
         }
        
     }
