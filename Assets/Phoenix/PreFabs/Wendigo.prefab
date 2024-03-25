@@ -156,13 +156,16 @@ MonoBehaviour:
   stateName: 
   player: {fileID: 0}
   distance: 0
-  speed: 3
+  speed: 7
   rotSpeed: 100
-  romming: 0
+  roaming: 0
   wondering: 0
   isRotatingLeft: 0
   isRotatingRight: 0
   isMoving: 0
+  rb: {fileID: 2029335438292936886}
+  skullCount: {fileID: 0}
+  cameraVeiw: {fileID: 0}
 --- !u!54 &2029335438292936886
 Rigidbody:
   m_ObjectHideFlags: 0

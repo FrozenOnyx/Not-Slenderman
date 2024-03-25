@@ -85,8 +85,8 @@ public class WendigoBehaviour : MonoBehaviour
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
-        #region RoamingMonoCode
-        IEnumerator Wondering()
+    #region RoamingMonoCode
+    IEnumerator Wondering()
     {
         int rotTime = Random.Range(1, 3);
         int rotWait = Random.Range(1, 4);
