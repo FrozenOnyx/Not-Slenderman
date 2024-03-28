@@ -17,10 +17,11 @@ public class SkullArea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && inside)
+        if (Input.GetKey(KeyCode.F) && inside)
         {
             Debug.Log("head");
             destroy = true;
+            inside = false;
         }
     }
 
@@ -30,7 +31,6 @@ public class SkullArea : MonoBehaviour
         if (other.gameObject == GameObject.FindWithTag("Skull") && destroy)
         {
             skullCounter++;
-            inside = false;
             Destroy(other.gameObject);
   
         }

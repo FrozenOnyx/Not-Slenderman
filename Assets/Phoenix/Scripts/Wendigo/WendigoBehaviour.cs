@@ -149,7 +149,7 @@ public class Roaming : BehaviourStates
         if (manager.distance < 15)
         {
             wendigo.transform.LookAt(manager.player.transform.position);
-            manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed , ForceMode.Force);
+            manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed * 10f, ForceMode.Force);
         }
     }
 
@@ -165,8 +165,8 @@ public class Roaming : BehaviourStates
             }
             if (manager.isMoving)
             {
-                wendigo.transform.position += wendigo.transform.forward * manager.speed * Time.deltaTime;
-            }
+            manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed, ForceMode.Force);
+        }
     }
 }
 public class Stalking : BehaviourStates
@@ -200,12 +200,12 @@ public class Stalking : BehaviourStates
         if (manager.cameraVeiw.inCamera == false || manager.distance > 40 || manager.distance < 10)
         {
             wendigo.transform.LookAt(manager.player.transform.position);
-            manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed /2, ForceMode.Force) ;
+            manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed * 2f, ForceMode.Force) ;
         }
         else if(manager.cameraVeiw.inCamera == true)
         {
             wendigo.transform.LookAt(manager.player.transform.position);
-            manager.rb.AddForce(wendigo.transform.forward.normalized * - manager.speed *2 , ForceMode.Force);
+            manager.rb.AddForce(wendigo.transform.forward.normalized * - manager.speed * 2f, ForceMode.Force);
         }
     }
     private void MoveIfStuck()
@@ -243,7 +243,7 @@ public class Attacking : BehaviourStates
     private void RunAtPlayer()
     { 
         wendigo.transform.LookAt(manager.player.transform.position);  
-        manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed , ForceMode.Force);
+        manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed * 10f, ForceMode.Force);
     }
     private void MoveIfStuck()
     {
