@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class BehaviourStates
 {
@@ -34,13 +36,19 @@ public class WendigoBehaviour : MonoBehaviour
     public bool isRotatingRight = false;
     public bool isMoving = false;
 
+    public NavMeshAgent agent;
+
     public Rigidbody rb;
 
     public SkullArea skullCount;
     public InCameraVeiw cameraVeiw;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        agent.enabled = false;
+        agent.updatePosition = true;
         states.Add("Roaming", new Roaming(gameObject, this));
         states.Add("Stalking", new Stalking(gameObject, this));
         states.Add("Attacking", new Attacking(gameObject, this));
@@ -178,16 +186,15 @@ public class Stalking : BehaviourStates
     }
     public override void EnterState() 
     {
-
+        manager.agent.enabled = true;
     }
     public override void ExitState() 
     { 
-
+        manager.agent.enabled = false;
     }
     public override void Update() 
     {
         SneakTowardsPlayer();
-        MoveIfStuck();
         if(manager.skullCount.skullCounter >= 2)
         {
             manager.ChangeState("Attacking");
@@ -199,22 +206,13 @@ public class Stalking : BehaviourStates
     { 
         if (manager.cameraVeiw.inCamera == false || manager.distance > 40 || manager.distance < 10)
         {
-            wendigo.transform.LookAt(manager.player.transform.position);
-            manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed * 2f, ForceMode.Force) ;
+            manager.agent.SetDestination(manager.player.transform.position);
         }
         else if(manager.cameraVeiw.inCamera == true)
         {
+            manager.agent.SetDestination(wendigo.transform.position);
             wendigo.transform.LookAt(manager.player.transform.position);
             manager.rb.AddForce(wendigo.transform.forward.normalized * - manager.speed * 2f, ForceMode.Force);
-        }
-    }
-    private void MoveIfStuck()
-    {
-        Vector3 wendigoVel = new Vector3(manager.rb.velocity.x, 0f, manager.rb.velocity.z);
-
-        if (wendigoVel.magnitude < 0.05)
-        {
-            manager.rb.AddForce(wendigo.transform.right.normalized * manager.speed *10f, ForceMode.Force);
         }
     }
 }
