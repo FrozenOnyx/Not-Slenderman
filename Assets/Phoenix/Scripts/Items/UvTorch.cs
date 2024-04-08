@@ -12,6 +12,8 @@ public class UvTorch : MonoBehaviour
 
     public Image torchTimeBar;
 
+    public UvLightDamage uvLight;
+
     public float timeInTorch;
     public float maxTimeOfTorch = 10f;
     // Update is called once per frame
@@ -33,6 +35,7 @@ public class UvTorch : MonoBehaviour
         {
             torchActive = false;
             torchLight.SetActive(false);
+            uvLight.isInsideUv = false;
         }
     }
     private void TorchTime()
