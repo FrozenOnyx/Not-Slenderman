@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 7074498499437625658}
   m_Layer: 0
   m_Name: NewAltar
-  m_TagString: Untagged
+  m_TagString: Altar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

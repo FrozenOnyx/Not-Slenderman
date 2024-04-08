@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Skull
   - Enemy
+  - Altar
   layers:
   - Default
   - TransparentFX

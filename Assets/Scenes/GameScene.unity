@@ -1332,6 +1332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewAltar
       objectReference: {fileID: 0}
+    - target: {fileID: 1017842209102782438, guid: 097c5042a748dd84eb1af71d34709cb6, type: 3}
+      propertyPath: m_TagString
+      value: Altar
+      objectReference: {fileID: 0}
     - target: {fileID: 2054976722863888840, guid: 097c5042a748dd84eb1af71d34709cb6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

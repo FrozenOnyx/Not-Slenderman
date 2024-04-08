@@ -11,7 +11,7 @@ public class AltarWin : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.name == "Altar")
+        if (collision.gameObject.tag == "Altar")
         {
 
             Debug.Log("Colliding with altar");
