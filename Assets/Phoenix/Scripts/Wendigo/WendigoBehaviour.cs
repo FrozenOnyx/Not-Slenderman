@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
@@ -29,6 +30,7 @@ public class WendigoBehaviour : MonoBehaviour
     public float speed = 7f;
     public float rotSpeed = 100f;
 
+    public string preState = "";
 
     public bool roaming = false;
     public bool wondering = false;
@@ -43,7 +45,7 @@ public class WendigoBehaviour : MonoBehaviour
     public SkullArea skullCount;
     public InCameraVeiw cameraVeiw;
 
-
+    public UvLightDamage uvLight;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +54,7 @@ public class WendigoBehaviour : MonoBehaviour
         states.Add("Roaming", new Roaming(gameObject, this));
         states.Add("Stalking", new Stalking(gameObject, this));
         states.Add("Attacking", new Attacking(gameObject, this));
+        states.Add("Hurt", new Hurt(gameObject, this));
         ChangeState("Roaming");
 
         rb = GetComponent<Rigidbody>();
@@ -70,7 +73,7 @@ public class WendigoBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+       // Debug.Log(transform.eulerAngles);
         if (currentState != null)
         {
             currentState.Update();
@@ -137,6 +140,7 @@ public class Roaming : BehaviourStates
     public override void EnterState() 
     {
         manager.roaming = true;
+        manager.preState = manager.stateName;
     }
     public override void ExitState() 
     {
@@ -144,20 +148,27 @@ public class Roaming : BehaviourStates
     }
     public override void Update() 
     {
-        StayOutOfRange();
+        Kill();
         StartRoming();
         if(manager.skullCount.skullCounter != 0)
         {
             manager.ChangeState("Stalking");
         }
+        if (manager.uvLight.isInsideUv == true)
+        {
+            manager.ChangeState("Hurt");
+        }
     }
 
-    private void StayOutOfRange()
+    private void Kill()
     {
         if (manager.distance < 15)
         {
-            wendigo.transform.LookAt(manager.player.transform.position);
+            Vector3 target = manager.player.transform.position;
+            target.y = wendigo.transform.position.y;
+            wendigo.transform.LookAt(target);
             manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed * 10f, ForceMode.Force);
+           // Debug.Log("Chasing");
         }
     }
 
@@ -187,6 +198,8 @@ public class Stalking : BehaviourStates
     public override void EnterState() 
     {
         manager.agent.enabled = true;
+        manager.agent.speed = 15f;
+        manager.preState = manager.stateName;
     }
     public override void ExitState() 
     { 
@@ -199,6 +212,10 @@ public class Stalking : BehaviourStates
         {
             manager.ChangeState("Attacking");
         }
+        if (manager.uvLight.isInsideUv == true)
+        {
+            manager.ChangeState("Hurt");
+        }
 
     }
 
@@ -210,9 +227,9 @@ public class Stalking : BehaviourStates
         }
         else if(manager.cameraVeiw.inCamera == true)
         {
-            manager.agent.SetDestination(wendigo.transform.position);
+            manager.agent.ResetPath();
             wendigo.transform.LookAt(manager.player.transform.position);
-            manager.rb.AddForce(wendigo.transform.forward.normalized * - manager.speed * 2f, ForceMode.Force);
+            manager.rb.AddForce(wendigo.transform.forward.normalized * - manager.speed * 10f, ForceMode.Force);
         }
     }
 }
@@ -222,9 +239,46 @@ public class Attacking : BehaviourStates
     {
         wendigo = gameObject;
         manager = wendigoBehaviour;
+        manager.preState = manager.stateName;
     }
     public override void EnterState()
     {
+        manager.agent.enabled = true;
+        manager.agent.speed = 35f;
+    }
+    public override void ExitState()
+    {
+        manager.agent.enabled = false;
+    }
+    public override void Update()
+    {
+        RunAtPlayer();
+        if (manager.uvLight.isInsideUv == true)
+        {
+            manager.ChangeState("Hurt");
+        }
+    }
+
+    private void RunAtPlayer()
+    {
+        manager.agent.SetDestination(manager.player.transform.position);
+    }
+
+}
+public class Hurt : BehaviourStates
+{
+    Vector3 dir;
+    public Hurt(GameObject gameObject, WendigoBehaviour wendigoBehaviour)
+    {
+        wendigo = gameObject;
+        manager = wendigoBehaviour;
+    }
+    public override void EnterState()
+    {
+        Vector3 target = manager.player.transform.position;
+        target.y = wendigo.transform.position.y;
+        wendigo.transform.forward = wendigo.transform.position - target ;
+        dir = wendigo.transform.forward.normalized;
 
     }
     public override void ExitState()
@@ -233,23 +287,23 @@ public class Attacking : BehaviourStates
     }
     public override void Update()
     {
-        RunAtPlayer();
-        MoveIfStuck();
-
+        wendigo.transform.forward = dir;
+        RunAway();
+        ChangeStateToPrevois();
     }
 
-    private void RunAtPlayer()
-    { 
-        wendigo.transform.LookAt(manager.player.transform.position);  
-        manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed * 10f, ForceMode.Force);
-    }
-    private void MoveIfStuck()
+    private void RunAway()
     {
-        Vector3 wendigoVel = new Vector3(manager.rb.velocity.x, 0f, manager.rb.velocity.z);
+        manager.rb.AddForce(wendigo.transform.forward.normalized * manager.speed * 4f , ForceMode.Force);
+    }
 
-        if (wendigoVel.magnitude < 0.05)
+    private void ChangeStateToPrevois()
+    {
+        if(manager.distance >= 60)
         {
-            manager.rb.AddForce(wendigo.transform.right.normalized * manager.speed * 10f, ForceMode.Force);
+            manager.ChangeState(manager.preState);
         }
     }
+
+
 }
