@@ -8,15 +8,6 @@ public class AltarWin : MonoBehaviour
 
     public SkullArea skullArea;
     public GameObject winScreen;
-    public int highestSkullCount;
-
-    private void Update()
-    {
-        if (highestSkullCount < skullArea.skullCounter)
-        {
-            highestSkullCount = skullArea.skullCounter;
-        }
-    }
 
     void OnCollisionStay(Collision collision)
     {
