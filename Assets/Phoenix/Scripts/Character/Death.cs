@@ -16,6 +16,8 @@ public class Death : MonoBehaviour
             playerIsDead = true;
             gameOverUi.SetActive(true);
             Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 }
