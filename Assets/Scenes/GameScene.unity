@@ -1962,6 +1962,7 @@ MonoBehaviour:
   torchActive: 0
   torchDisbled: 0
   torchTimeBar: {fileID: 749698212}
+  uvLight: {fileID: 1828983107}
   timeInTorch: 10
   maxTimeOfTorch: 10
 --- !u!114 &1942824903
