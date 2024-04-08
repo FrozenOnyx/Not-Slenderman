@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
   m_FogMode: 2
   m_FogDensity: 0.1
@@ -549,49 +549,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 162026169396367867, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 162026169396367867, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.132
-      objectReference: {fileID: 0}
-    - target: {fileID: 162026169396367867, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -30.6
-      objectReference: {fileID: 0}
     - target: {fileID: 1579714676720630789, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
-      propertyPath: Skull
+      propertyPath: Spawn4
       value: 
-      objectReference: {fileID: 5825263171192331476, guid: 861a186c28b2de64183f7b73c08892ac, type: 3}
+      objectReference: {fileID: 788452187}
+    - target: {fileID: 1579714676720630789, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+      propertyPath: Spawn5
+      value: 
+      objectReference: {fileID: 788452186}
+    - target: {fileID: 1579714676720630789, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+      propertyPath: Spawn6
+      value: 
+      objectReference: {fileID: 788452185}
+    - target: {fileID: 1579714676720630789, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+      propertyPath: Spawn7
+      value: 
+      objectReference: {fileID: 788452184}
+    - target: {fileID: 1579714676720630789, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+      propertyPath: Spawn8
+      value: 
+      objectReference: {fileID: 788452183}
     - target: {fileID: 1579714676720630789, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
       propertyPath: skullArea
       value: 
       objectReference: {fileID: 1942824903}
-    - target: {fileID: 3619510148081087800, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -47
-      objectReference: {fileID: 0}
-    - target: {fileID: 3619510148081087800, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.755
-      objectReference: {fileID: 0}
-    - target: {fileID: 3619510148081087800, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 22.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 3914717850938837695, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 31.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3914717850938837695, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 23.8
-      objectReference: {fileID: 0}
     - target: {fileID: 4864124445378244294, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
       propertyPath: m_Name
       value: SpawnLocations
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210375849749185034, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 312.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210375849749185034, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 34.736
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210375849749185034, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 236.69
       objectReference: {fileID: 0}
     - target: {fileID: 9020842498881415364, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
       propertyPath: m_LocalPosition.x
@@ -638,6 +634,31 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+--- !u!1 &788452183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7691410407298143149, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+  m_PrefabInstance: {fileID: 788452182}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &788452184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4150594586568207170, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+  m_PrefabInstance: {fileID: 788452182}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &788452185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4161774575987449558, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+  m_PrefabInstance: {fileID: 788452182}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &788452186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2597467706736204042, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+  m_PrefabInstance: {fileID: 788452182}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &788452187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 335233609683688183, guid: b54eb9e043862554bb5ce784a469d872, type: 3}
+  m_PrefabInstance: {fileID: 788452182}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &798849284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1980,6 +2001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skullArea: {fileID: 1942824903}
   winScreen: {fileID: 1918847423}
+  highestSkullCount: 0
 --- !u!1001 &2048723330
 PrefabInstance:
   m_ObjectHideFlags: 0
