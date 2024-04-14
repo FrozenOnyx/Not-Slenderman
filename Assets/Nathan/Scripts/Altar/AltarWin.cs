@@ -8,6 +8,7 @@ public class AltarWin : MonoBehaviour
 
     public SkullArea skullArea;
     public GameObject winScreen;
+    public int skullsInserted;
 
     void OnCollisionStay(Collision collision)
     {
@@ -18,8 +19,12 @@ public class AltarWin : MonoBehaviour
 
             if (skullArea.skullCounter == 8 && Input.GetKey(KeyCode.F))
             {
-                winScreen.SetActive(true);
-                Time.timeScale = 0;
+                skullsInserted++;
+                if (skullsInserted >= 8)
+                {
+                    winScreen.SetActive(true);
+                    Time.timeScale = 0;
+                }
             }
         }
     }
