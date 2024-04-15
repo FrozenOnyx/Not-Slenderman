@@ -2627,6 +2627,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wendigo
       objectReference: {fileID: 0}
+    - target: {fileID: 6565080492837852954, guid: 41f17e2459090a64eabf58e84ba527fe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
