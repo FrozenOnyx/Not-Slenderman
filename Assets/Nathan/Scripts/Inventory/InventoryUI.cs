@@ -12,16 +12,7 @@ public class InventoryUI : MonoBehaviour
     public bool nearSkull;
     public bool nearAltar;
 
-    private bool slotActive1 = false;
-    private bool slotActive2 = false;
-    private bool slotActive3 = false;
-    private bool slotActive4 = false;
-    private bool slotActive5 = false;
-    private bool slotActive6 = false;
-    private bool slotActive7 = false;
-    private bool slotActive8 = false;
-
-
+    public SkullArea skullArea;
 
     void Update()
     {
@@ -42,59 +33,80 @@ public class InventoryUI : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && nearSkull == true) //nearSkull will check if player is near a skull, change variable if needed
+        if (Input.GetKey(KeyCode.F))
         {
-            if (slotActive1 == false)
+            if (skullArea.skullCounter == 1)
             {
                 Debug.Log("Slot1Active");
                 slot1.SetActive(true);
-                slotActive1 = true;
-            } 
-            else if (slotActive2 == false)
+            }
+            else if (skullArea.skullCounter == 2)
             {
                 Debug.Log("Slot2Active");
+                slot1.SetActive(true);
                 slot2.SetActive(true);
-                slotActive2 = true;
             }
-            else if (slotActive3 == false)
+            else if (skullArea.skullCounter == 3)
             {
                 Debug.Log("Slot3Active");
+                slot1.SetActive(true);
+                slot2.SetActive(true);
                 slot3.SetActive(true);
-                slotActive3 = true;
             }
-            else if (slotActive4 == false)
+            else if (skullArea.skullCounter == 4)
             {
                 Debug.Log("Slot4Active");
+                slot1.SetActive(true);
+                slot2.SetActive(true);
+                slot3.SetActive(true);
                 slot4.SetActive(true);
-                slotActive4 = true;
             }
-            else if (slotActive5 == false)
+            else if (skullArea.skullCounter == 5)
             {
                 Debug.Log("Slot5Active");
+                slot1.SetActive(true);
+                slot2.SetActive(true);
+                slot3.SetActive(true);
+                slot4.SetActive(true);
                 slot5.SetActive(true);
-                slotActive5 = true;
             }
-            else if (slotActive6 == false)
+            else if (skullArea.skullCounter == 6)
             {
                 Debug.Log("Slot6Active");
+                slot1.SetActive(true);
+                slot2.SetActive(true);
+                slot3.SetActive(true);
+                slot4.SetActive(true);
+                slot5.SetActive(true);
                 slot6.SetActive(true);
-                slotActive6 = true;
             }
-            else if (slotActive7 == false)
+            else if (skullArea.skullCounter == 7)
             {
                 Debug.Log("Slot7Active");
+                slot1.SetActive(true);
+                slot2.SetActive(true);
+                slot3.SetActive(true);
+                slot4.SetActive(true);
+                slot5.SetActive(true);
+                slot6.SetActive(true);
                 slot7.SetActive(true);
-                slotActive7 = true;
             }
-            else if (slotActive8 == false)
+            else if (skullArea.skullCounter == 8)
             {
                 Debug.Log("Slot8Active");
+                slot1.SetActive(true);
+                slot2.SetActive(true);
+                slot3.SetActive(true);
+                slot4.SetActive(true);
+                slot5.SetActive(true);
+                slot6.SetActive(true);
+                slot7.SetActive(true);
                 slot8.SetActive(true);
-                slotActive8 = true;
             }
         }
+        
 
-        if (Input.GetKeyDown(KeyCode.Q) && nearAltar == true)
+        /*if (Input.GetKeyDown(KeyCode.F) && nearAltar == true)
         {
             if (slotActive8 == true)
             {
@@ -144,6 +156,6 @@ public class InventoryUI : MonoBehaviour
                 slot1.SetActive(false);
                 slotActive1 = false;
             }
-        }
+        }*/
     }
 }

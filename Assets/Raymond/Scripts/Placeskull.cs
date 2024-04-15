@@ -7,6 +7,11 @@ public class Placeskull : MonoBehaviour
     public GameObject skull1;
     public GameObject skull2;
     public GameObject skull3;
+    public GameObject skull4;
+    public GameObject skull5;
+    public GameObject skull6;
+    public GameObject skull7;
+    public GameObject skull8;
     public GameObject altar;
 
     public SkullArea skullAreaScript;
@@ -32,17 +37,31 @@ public class Placeskull : MonoBehaviour
             {
                 skull2.SetActive(true);
             }
-            else if (skullAreaScript.skullCounter >= 3 && Input.GetKeyDown(KeyCode.F) && skull1.activeInHierarchy && skull2.activeInHierarchy && !skull3.activeInHierarchy)
+            else if (skullAreaScript.skullCounter >= 3 && Input.GetKeyDown(KeyCode.F) && skull2.activeInHierarchy && !skull3.activeInHierarchy)
             {
                 skull3.SetActive(true);
             }
-        }
-        if(skull1.activeInHierarchy && skull2.activeInHierarchy && skull3.activeInHierarchy)
-        {
-            win.SetActive(true);
-            Time.timeScale = 0f;
-        }
-       
+            else if (skullAreaScript.skullCounter >= 4 && Input.GetKeyDown(KeyCode.F) && skull3.activeInHierarchy && !skull4.activeInHierarchy)
+            {
+                skull4.SetActive(true);
+            }
+            if (skullAreaScript.skullCounter >= 5 && Input.GetKeyDown(KeyCode.F) && skull4.activeInHierarchy && !skull5.activeInHierarchy)
+            {
+                skull5.SetActive(true);
+            }
+            else if (skullAreaScript.skullCounter >= 6 && Input.GetKeyDown(KeyCode.F) && skull5.activeInHierarchy && !skull6.activeInHierarchy)
+            {
+                skull6.SetActive(true);
+            }
+            else if (skullAreaScript.skullCounter >= 7 && Input.GetKeyDown(KeyCode.F) && skull6.activeInHierarchy && !skull7.activeInHierarchy)
+            {
+                skull7.SetActive(true);
+            }
+            else if (skullAreaScript.skullCounter >= 8 && Input.GetKeyDown(KeyCode.F) && skull7.activeInHierarchy && !skull8.activeInHierarchy)
+            {
+                skull8.SetActive(true);
+            }
+        }  
     }
 
     public void OnTriggerEnter(Collider other)
