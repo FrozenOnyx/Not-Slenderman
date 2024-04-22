@@ -60,6 +60,10 @@ public class Placeskull : MonoBehaviour
             else if (skullAreaScript.skullCounter >= 8 && Input.GetKeyDown(KeyCode.F) && skull7.activeInHierarchy && !skull8.activeInHierarchy)
             {
                 skull8.SetActive(true);
+                win.SetActive(true);
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }  
     }

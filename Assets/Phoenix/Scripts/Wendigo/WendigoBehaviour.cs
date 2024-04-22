@@ -46,6 +46,8 @@ public class WendigoBehaviour : MonoBehaviour
     public InCameraVeiw cameraVeiw;
 
     public UvLightDamage uvLight;
+
+    public AudioSource screem;
     // Start is called before the first frame update
     void Start()
     {
@@ -200,6 +202,7 @@ public class Stalking : BehaviourStates
         manager.agent.enabled = true;
         manager.agent.speed = 15f;
         manager.preState = manager.stateName;
+        manager.screem.Play();
     }
     public override void ExitState() 
     { 
@@ -245,6 +248,8 @@ public class Attacking : BehaviourStates
     {
         manager.agent.enabled = true;
         manager.agent.speed = 35f;
+        manager.screem.pitch = 2;
+        manager.screem.Play();
     }
     public override void ExitState()
     {

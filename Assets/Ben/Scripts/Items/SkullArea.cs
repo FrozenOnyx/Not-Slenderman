@@ -33,9 +33,9 @@ public class SkullArea : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Skull") && destroy)
         {
-            skullCounter++;
+            skullCounter = skullCounter + 1;
             Destroy(other.gameObject);
-  
+            destroy = false;
         }
     }
 }
