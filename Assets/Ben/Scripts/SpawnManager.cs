@@ -33,7 +33,7 @@ public class SpawnManager : MonoBehaviour
     }
     private void spawnFirstSkull()
     {
-        bone = Random.Range(0, spawnList.Count);
+        bone = 0;
         Instantiate(Skull, spawnList[bone].transform.position, Quaternion.identity);
 
         spawnList.Remove(spawnList[bone]);
