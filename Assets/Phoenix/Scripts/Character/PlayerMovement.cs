@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask ground;
     bool grouded;
 
+    public AudioSource breath;
+    public AudioSource footsteps;
+
     public Transform orientation;
 
     float horizontalInput;
@@ -103,6 +106,24 @@ public class PlayerMovement : MonoBehaviour
             stamina = Mathf.Clamp(stamina, 0, 4);
         }
 
+        if(stamina < 3.5 && stamina > 2.5)
+        {
+            breath.Play();
+            breath.volume = 0.2f;
+        }
+        else if (stamina >= 3.5)
+        {
+            breath.Stop();
+        }
+        else if ( stamina <= 2.5 && stamina >1)
+        {
+            breath.volume = 0.5f;
+        }
+        else if (stamina <= 1)
+        {
+            breath.volume = 1;
+        }
+
     }
 
     private void SpeedControl()
@@ -113,6 +134,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 limitedVel = playerVel.normalized * moveSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+        }
+        if(playerVel.magnitude < 1 && grouded)
+        {
+            footsteps.Play();
         }
     }
     private void OnGUI()

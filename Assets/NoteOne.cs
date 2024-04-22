@@ -6,8 +6,21 @@ using UnityEngine;
 public class NoteOne : MonoBehaviour
 {
     public bool inNote = false;
-    public TextMeshProUGUI notePage;
-    public string note;
+    public TextMeshProUGUI noteTextOne;
+    public TextMeshProUGUI noteTextTwo;
+    public TextMeshProUGUI noteTextThree;
+    public TextMeshProUGUI noteTextFour;
+    public TextMeshProUGUI noteTextFive;
+    public TextMeshProUGUI noteTextSix;
+    
+    public GameObject interact;
+
+    public string noteLineOne;
+    public string noteLineTwo;
+    public string noteLineThree;
+    public string noteLineFour;
+    public string noteLineFive;
+    public string noteLineSix;
     public GameObject noteThing;
 
     private bool isPaused = false;
@@ -20,7 +33,12 @@ public class NoteOne : MonoBehaviour
        {
             Debug.Log("note one touched");
             Time.timeScale = 0;
-            notePage.SetText(note);
+            noteTextOne.SetText(noteLineOne);
+            noteTextTwo.SetText(noteLineTwo);
+            noteTextThree.SetText(noteLineThree);
+            noteTextFour.SetText(noteLineFour);
+            noteTextFive.SetText(noteLineFive);
+            noteTextSix.SetText(noteLineSix);
             isPaused = true;
             noteThing.SetActive(true);
        } 
@@ -36,6 +54,7 @@ public class NoteOne : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             inNote = true;
+            interact.SetActive(true);
         }
     }
 
@@ -45,6 +64,7 @@ public class NoteOne : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             inNote = false;
+            interact.SetActive(false);
         }
     }
 }
