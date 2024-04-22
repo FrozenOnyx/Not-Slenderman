@@ -6985,11 +6985,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8070174746845059478, guid: 5563bb86adc493044aefd7c2b6b9eba2, type: 3}
       propertyPath: noteLineSix
-      value: Complete Ritual
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8070174746845059478, guid: 5563bb86adc493044aefd7c2b6b9eba2, type: 3}
       propertyPath: noteLineTwo
-      value: Left Click UV
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8070174746845059478, guid: 5563bb86adc493044aefd7c2b6b9eba2, type: 3}
       propertyPath: noteTextOne
@@ -7005,11 +7005,11 @@ PrefabInstance:
       objectReference: {fileID: 936519964}
     - target: {fileID: 8070174746845059478, guid: 5563bb86adc493044aefd7c2b6b9eba2, type: 3}
       propertyPath: noteLineFive
-      value: Find 8 Skulls
+      value: Find 8 Skulls for ritual
       objectReference: {fileID: 0}
     - target: {fileID: 8070174746845059478, guid: 5563bb86adc493044aefd7c2b6b9eba2, type: 3}
       propertyPath: noteLineFour
-      value: F to pick up skulls
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8070174746845059478, guid: 5563bb86adc493044aefd7c2b6b9eba2, type: 3}
       propertyPath: noteTextFive
@@ -7021,7 +7021,7 @@ PrefabInstance:
       objectReference: {fileID: 441938094}
     - target: {fileID: 8070174746845059478, guid: 5563bb86adc493044aefd7c2b6b9eba2, type: 3}
       propertyPath: noteLineThree
-      value: UV Scares it
+      value: Left Click UV
       objectReference: {fileID: 0}
     - target: {fileID: 8070174746845059478, guid: 5563bb86adc493044aefd7c2b6b9eba2, type: 3}
       propertyPath: noteTextThree
