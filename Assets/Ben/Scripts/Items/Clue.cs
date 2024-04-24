@@ -6,10 +6,7 @@ public class Clue : MonoBehaviour
 {
     public GameObject uv;
 
-    private void Start()
-    {
-        uv = GameObject.Find("Spot Light");
-    }
+  
     // Update is called once per frame
     void Update()
     {
