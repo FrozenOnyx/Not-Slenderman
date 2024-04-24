@@ -28851,6 +28851,14 @@ PrefabInstance:
       propertyPath: skull8
       value: 
       objectReference: {fileID: 1306289477}
+    - target: {fileID: 2993416666817845957, guid: 5e79488cfeef4fc4bb7a479530e73117, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740314308115342397, guid: 5e79488cfeef4fc4bb7a479530e73117, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6629508146576765683, guid: 5e79488cfeef4fc4bb7a479530e73117, type: 3}
       propertyPath: m_LocalPosition.x
       value: 470.84
@@ -28903,6 +28911,10 @@ PrefabInstance:
       propertyPath: torchTimeBar
       value: 
       objectReference: {fileID: 749698212}
+    - target: {fileID: 8510672617068152101, guid: 5e79488cfeef4fc4bb7a479530e73117, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28928,6 +28940,10 @@ PrefabInstance:
       propertyPath: skullCount
       value: 
       objectReference: {fileID: 1942824903}
+    - target: {fileID: 2029335438292936886, guid: 41f17e2459090a64eabf58e84ba527fe, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 3750658718779927898, guid: 41f17e2459090a64eabf58e84ba527fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
