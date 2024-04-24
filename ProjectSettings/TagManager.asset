@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Skull
   - Enemy
+  - Clue
   layers:
   - Default
   - TransparentFX
