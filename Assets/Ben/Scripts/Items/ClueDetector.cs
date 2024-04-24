@@ -1,23 +1,24 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
-public class UvLightDamage : MonoBehaviour
+public class ClueDetector : MonoBehaviour
 {
     public bool isInsideUv = false;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Clue"))
         {
+            other.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             isInsideUv = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Clue"))
         {
+            other.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             isInsideUv = false;
         }
     }
