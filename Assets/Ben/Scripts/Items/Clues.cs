@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Clues : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,20 @@ public class Clues : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Clue"))
+        {
+            other.gameObject.SetActive(true);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Clue"))
+        {
+            other.gameObject.SetActive(false);
+        }
     }
 }
