@@ -28742,6 +28742,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spot Light
       objectReference: {fileID: 0}
+    - target: {fileID: 651762121686897478, guid: 54edc1f8c980b4f41a19204253ce65d6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1931459076963072261, guid: 54edc1f8c980b4f41a19204253ce65d6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
