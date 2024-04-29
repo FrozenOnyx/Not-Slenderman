@@ -200,7 +200,7 @@ public class Stalking : BehaviourStates
     public override void EnterState() 
     {
         manager.agent.enabled = true;
-        manager.agent.speed = 15f;
+        manager.agent.speed = 25f;
         manager.preState = manager.stateName;
         manager.screem.Play();
     }
@@ -247,7 +247,7 @@ public class Attacking : BehaviourStates
     public override void EnterState()
     {
         manager.agent.enabled = true;
-        manager.agent.speed = 35f;
+        manager.agent.speed = 45f;
         manager.screem.pitch = 2;
         manager.screem.Play();
     }

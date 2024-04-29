@@ -8,13 +8,12 @@ public class Placeskull : MonoBehaviour
     public GameObject skull2;
     public GameObject skull3;
     public GameObject skull4;
-    public GameObject skull5;
-    public GameObject skull6;
-    public GameObject skull7;
-    public GameObject skull8;
     public GameObject altar;
 
     public SkullArea skullAreaScript; // reference to skull area script
+
+    public AudioSource wind;
+    public PlayerMovement player;
 
     public GameObject win;
     bool touched = false;
@@ -44,26 +43,12 @@ public class Placeskull : MonoBehaviour
             else if (skullAreaScript.skullCounter >= 4 && Input.GetKeyDown(KeyCode.F) && skull3.activeInHierarchy && !skull4.activeInHierarchy)
             {
                 skull4.SetActive(true);
-            }
-            if (skullAreaScript.skullCounter >= 5 && Input.GetKeyDown(KeyCode.F) && skull4.activeInHierarchy && !skull5.activeInHierarchy)
-            {
-                skull5.SetActive(true);
-            }
-            else if (skullAreaScript.skullCounter >= 6 && Input.GetKeyDown(KeyCode.F) && skull5.activeInHierarchy && !skull6.activeInHierarchy)
-            {
-                skull6.SetActive(true);
-            }
-            else if (skullAreaScript.skullCounter >= 7 && Input.GetKeyDown(KeyCode.F) && skull6.activeInHierarchy && !skull7.activeInHierarchy)
-            {
-                skull7.SetActive(true);
-            }
-            else if (skullAreaScript.skullCounter >= 8 && Input.GetKeyDown(KeyCode.F) && skull7.activeInHierarchy && !skull8.activeInHierarchy)
-            {
-                skull8.SetActive(true);
                 win.SetActive(true);
                 Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                player.audioOff = true;
+                wind.Stop();
             }
         }  
     }

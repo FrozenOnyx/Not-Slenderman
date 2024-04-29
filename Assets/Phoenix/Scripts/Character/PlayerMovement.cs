@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
+    public bool audioOff = false;
+
     Vector3 moveDirection;
 
     Rigidbody rb;
@@ -106,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
             stamina = Mathf.Clamp(stamina, 0, 4);
         }
 
-        if(stamina < 3.5 && stamina > 2.5)
+        if(stamina < 3.5 && stamina > 2.5 && !audioOff)
         {
             breath.Play();
             breath.volume = 0.2f;
@@ -138,6 +140,10 @@ public class PlayerMovement : MonoBehaviour
         if(playerVel.magnitude < 1 && grouded)
         {
             footsteps.Play();
+        }
+        else if (audioOff)
+        {
+            footsteps.Stop();
         }
     }
     private void OnGUI()

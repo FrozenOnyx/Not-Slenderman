@@ -14,6 +14,8 @@ public class UvTorch : MonoBehaviour
 
     public UvLightDamage uvLight;
 
+    public AudioSource sorce;
+
     public float timeInTorch;
     public float maxTimeOfTorch = 10f;
     // Update is called once per frame
@@ -29,13 +31,15 @@ public class UvTorch : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && torchActive == false && torchDisbled == false)
         {
             torchActive = true;
-            torchLight.SetActive(true);     
+            torchLight.SetActive(true);  
+            sorce.Play();
         }
         else if(Input.GetKeyDown(KeyCode.Mouse0) && torchActive == true && torchDisbled == false)
         {
             torchActive = false;
             torchLight.SetActive(false);
             uvLight.isInsideUv = false;
+            sorce.Play();
         }
     }
     private void TorchTime()

@@ -9,6 +9,7 @@ public class AltarWin : MonoBehaviour
     public SkullArea skullArea;
     public GameObject winScreen;
 
+    public bool playerWins = false;
     void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.name == "Altar")
